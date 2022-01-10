@@ -6,7 +6,7 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 21:13:25 by pforesti          #+#    #+#             */
-/*   Updated: 2021/12/06 10:21:36 by pforesti         ###   ########.fr       */
+/*   Updated: 2022/01/10 14:35:19 by difool           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk_bonus.h"
@@ -48,8 +48,11 @@ static void	ft_server(int signum, siginfo_t *si, void *uc)
 {
 	static char		c = 0;
 	static int		i = 0;
+	static int		pid = 0;
 	int				flag;
 
+	if (si->si_pid)
+		pid = si->si_pid;
 	flag = 0;
 	if (signum == SIGUSR2)
 		c ^= 1 << i;
@@ -66,7 +69,7 @@ static void	ft_server(int signum, siginfo_t *si, void *uc)
 	}
 	(void)uc;
 	usleep(100);
-	kill(si->si_pid, SIGUSR1);
+	kill(pid, SIGUSR1);
 }
 
 int	main(void)
