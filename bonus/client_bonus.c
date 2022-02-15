@@ -6,7 +6,7 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:23:29 by pforesti          #+#    #+#             */
-/*   Updated: 2021/12/06 10:21:23 by pforesti         ###   ########.fr       */
+/*   Updated: 2022/02/15 09:49:05 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk_bonus.h"
@@ -51,7 +51,7 @@ void	ft_handler(int signum)
 	{
 		received++;
 		if (received / 8 == (g_sent / 2) && !(received % 8) && g_sent >= 500)
-			ft_printf("half of the characters received\n", received / 8);
+			ft_printf("half of the characters received\n");
 	}
 }
 
